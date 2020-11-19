@@ -1,9 +1,11 @@
 package champollion;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Enseignant extends Personne {
 
     // TODO : rajouter les autres méthodes présentes dans le diagramme UML
-
+    private List<ServicePrevu> prevu = new ArrayList<>();
     public Enseignant(String nom, String email) {
         super(nom, email);
     }
@@ -18,7 +20,14 @@ public class Enseignant extends Personne {
      */
     public int heuresPrevues() {
         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        int equivalTD= 0;
+        for(ServicePrevu service : prevu){
+            equivalTD += 1.5 * service.getVolumeCM();
+            equivalTD += service.getVolumeTD();
+            equivalTD += 0.75 * service.getVolumeTP();
+        }
+        return Math.round(equivalTD);
+
     }
 
     /**
@@ -32,7 +41,15 @@ public class Enseignant extends Personne {
      */
     public int heuresPrevuesPourUE(UE ue) {
         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        int equivalTD= 0;
+        for(ServicePrevu service : prevu){
+            if(service.getUE().equals(ue)) {
+                equivalTD += 1.5 * service.getVolumeCM();
+                equivalTD += service.getVolumeTD();
+                equivalTD += 0.75 * service.getVolumeTP();
+            }
+        }
+        return Math.round(equivalTD);
     }
 
     /**
@@ -45,7 +62,12 @@ public class Enseignant extends Personne {
      */
     public void ajouteEnseignement(UE ue, int volumeCM, int volumeTD, int volumeTP) {
         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        Enseignant e = new Enseignant(this.getNom(),this.getEmail());
+        ServicePrevu s = new ServicePrevu(ue,volumeCM,volumeTD,volumeTP,e);
+        prevu.add(s);
     }
 
+    public void ajouteIntervention (Intervention e){
+        
+    }
 }
