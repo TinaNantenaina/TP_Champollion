@@ -6,6 +6,8 @@ public class Enseignant extends Personne {
 
     // TODO : rajouter les autres méthodes présentes dans le diagramme UML
     private List<ServicePrevu> prevu = new ArrayList<>();
+    private List<Intervention> listeIntervention = new ArrayList<>();
+    
     public Enseignant(String nom, String email) {
         super(nom, email);
     }
@@ -65,5 +67,18 @@ public class Enseignant extends Personne {
         Enseignant e = new Enseignant(this.getNom(),this.getEmail());
         ServicePrevu s = new ServicePrevu(ue,volumeCM,volumeTD,volumeTP,e);
         prevu.add(s);
+    }
+    
+   /**
+     * ajoute une intervention planifiée pour l'enseignant
+     * @param inter lintervention a ajouter
+     */
+    public void ajouteIntervention(Intervention inter){
+        listeIntervention.add(inter);
+        
+    }
+    
+    public List<Intervention> getListeIntervention() {
+        return listeIntervention;
     }
 }

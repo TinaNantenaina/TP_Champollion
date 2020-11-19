@@ -67,5 +67,11 @@ public class ChampollionJUnitTest {
 				"L'enseignant doit maintenant avoir 18 heures prévues pour l'UE 'uml'");
 
 	}
-	
+        
+        
+        @Test
+	public void testAjoutInter(){
+            untel.ajouteIntervention(I1);
+            assertEquals(1, untel.getListeIntervention().size());	
+        }
 }
