@@ -66,8 +66,4 @@ public class Enseignant extends Personne {
         ServicePrevu s = new ServicePrevu(ue,volumeCM,volumeTD,volumeTP,e);
         prevu.add(s);
     }
-
-    public void ajouteIntervention (Intervention e){
-        
-    }
 }
